@@ -1,0 +1,50 @@
+<div>
+    <h1>
+        {{title}}
+    </h1>
+</div>
+<div>
+    <label>
+        Movie Title:
+    </label>
+    <typeahead placeholder='Movie title here...' url='http://10.166.14.153:7010/events/name' queryString='startWith' displayField='title'
+        method='get' (sent)="onEventSent($event)" (received)="onEventReceived($event)" (selected)="onEventSelected($event)">
+        </typeahead>
+</div>
+<div *ngIf="selectedEvent">
+    <h2>
+        Event Details:
+    </h2>
+    <div class='form-group'>
+        <label>ID:</label>
+        <label>{{selectedEvent.id}}</label>
+    </div>
+    <div class='form-group'>
+        <label>Title:</label>
+        <label>{{selectedEvent.title}}</label>
+    </div>
+    <div class='form-group'>
+        <label>Synopsis:</label>
+        <label>{{selectedEvent.synopsis}}</label>
+    </div>
+    <div class='form-group'>
+        <label>URL:</label>
+        <a href='{{selectedEvent.siteUrl}}' target='_blank'>Link para o site.</a>
+    </div>
+    <div *ngIf='selectedEvent.trailers.length > 0'>
+        <h3>
+            Trailers:
+        </h3>
+        <div *ngFor='let trailer of selectedEvent.trailers'>
+            <a href='{{trailer.url}}' target='_blank'>{{trailer.type}}</a>
+        </div>
+    </div>
+    <div *ngIf='selectedEvent.images.length > 0'>
+        <h3>
+            Images:
+        </h3>
+        <div *ngFor='let image of selectedEvent.images'>
+            <img src='{{image.url}}'><br>
+        </div>
+    </div>
+</div>

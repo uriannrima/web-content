@@ -1,0 +1,14 @@
+node_modules
+dist
+.tmp
+.tmp_frontend
+.sass-cache/
+bower_components
+.idea/
+atlassian-ide-plugin.xml
+*.sublime-*
+constants.js
+app/scripts/templates.js
+reports
+*.log
+/.project
